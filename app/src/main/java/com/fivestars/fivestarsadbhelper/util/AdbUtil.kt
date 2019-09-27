@@ -43,9 +43,6 @@ object AdbUtil {
     }
 
     fun setBatteryLevel(batteryLevel: Int) {
-
-
-            // Install the new apk over the old apk via "pm install -r"
             val command =
                 libs + "dumpsys battery set level $batteryLevel"
             Log.d(LOG_TAG, "Executing command 1: $command")
@@ -53,5 +50,15 @@ object AdbUtil {
             if (result != 0) {
                 Log.e(LOG_TAG, "Could not execute command $command as root")
             }
+    }
+
+    fun resetBatteryLevel() {
+        val command =
+            libs + "dumpsys battery reset"
+        Log.d(LOG_TAG, "Executing command 1: $command")
+        val result = executeAsRoot(command)
+        if (result != 0) {
+            Log.e(LOG_TAG, "Could not execute command $command as root")
+        }
     }
 }

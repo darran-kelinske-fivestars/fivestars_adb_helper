@@ -18,5 +18,9 @@ class MainActivity : AppCompatActivity() {
                 AdbUtil.setBatteryLevel(this)
             }
         }
+
+        reset_button.setOnClickListener {
+            AdbUtil.resetBatteryLevel()
+        }
     }
 }
